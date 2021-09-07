@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+   <head>
+      <title>Link Updater</title>
+      <link rel="stylesheet" type="text/css" href="css/asset/main.css">
+      <link rel="stylesheet" type="text/css" href="css/core/jquery-ui.min.css">
+   </head>
+   <body>
+      <!-- <nav class="bg-color">Adaptive tabs</nav> -->
+      <section class="wrapper bg-color">
+         <ul class="tabs">
+            <li class="active">Self QA</li>
+            <li id="page-meta-wrapper">Page Meta</li>
+         </ul>
+         <ul class="tab__content">
+            <li class="active">
+               <div class="content__wrapper">
+                  <div class="self-qa-container">
+                     
+                     <div class="row-cust">
+                        <div class="column-cust">
+                           <div class="checkboxes" title="Checks for master page content on the page">
+                              <label for="master-finder"><input id="master-finder" type="checkbox" name="valueselected" value="master-finderunhide"> <span>Master Page Content</span></label>
+                           </div>
+                           <div class="checkboxes" title="Checks for small-font on the page">
+                              <label for="small-font"><input id="small-font" type="checkbox" name="valueselected" value="small-fontunhide"> <span>Text Which Has Small Font</span></label>
+                           </div>
+                           <div class="checkboxes" title="Checks for # links">
+                              <label for="hash-link"><input id="hash-link" type="checkbox" name="valueselected" value="hash-linkunhide"> <span>Find Hash Links/References</span></label>
+                           </div>
+                           <div class="checkboxes" title="Checks for specified text in the URLs on the page">
+                              <label for="other-pageurl"><input id="other-pageurl" type="checkbox" name="valueselected" value="other-pageurlunhide"> <span>Find Other URL</span></label>
+                           </div>
+                           <div class="checkboxes" title="Check for Strong/Bold tags in heading tags (h2,h3)">
+                              <label for="heading-tags-bold"><input id="heading-tags-bold" type="checkbox" name="valueselected" value="heading-tags-boldunhide"> <span>Find Bold in Heading Tags</span></label>
+                           </div>
+                        </div>
+                        <div class="column-cust">
+                           <div class="checkboxes" title="Displays the hidden mobile component on the page">
+                              <label for="mobileunhidecheck"><input id="mobileunhidecheck" type="checkbox" name="valueselected" value="mobileunhide"> <span>Mobile Component Unhide</span></label>
+                           </div>
+                           <div class="checkboxes" title="Displays the behind login component on the page">
+                              <label for="removeloggedincheck"><input id="removeloggedincheck" type="checkbox" name="valueselected" value="removeloggedinpers"> <span>Remove Logged In Class</span></label>
+                           </div>
+                           <div class="checkboxes" title="This will show the components of the page which are locked only for HCP's">
+                              <label for="prescriber"><input id="prescriber" type="checkbox" name="valueselected" value="prescriberunhide"> <span>Prescriber Box Unhide</span></label>
+                           </div>
+                           <div class="checkboxes" title="This will show the components of the page which are locked only for Non-HCP's">
+                              <label for="non-prescriber"><input id="non-prescriber" type="checkbox" name="valueselected" value="non-prescriberunhide"> <span>Non-Prescriber Box Class</span></label>
+                           </div>
+                        </div>
+                     </div>
+                     <div id="mobile-component-finder">
+                        Page contains mobile component. Please click on the "Mobile Component Unhide" checkbox and hit Start Check button.
+                     </div>
+                     <hr>
+                     <div class="row-cust">
+                        <div class="column-cust">
+                           <div class="checkboxes" title="Show Grids On Page">
+                              <label for="showAEMGrids"><input id="showAEMGrids" type="checkbox" name="valueselected" value="highlightAEMGrids"> <span>Show DSM Grids</span></label>
+                           </div>
+                           <div class="checkboxes" title="Show Alt Tags On frontend">
+                              <label for="showAtlTags"><input id="showAtlTags" type="checkbox" name="valueselected" value="showAtlTagsFront"> <span>Show Alt Tags</span></label>
+                           </div>
+                        </div>
+                        <div class="column-cust">
+                           <div class="checkboxes" title="Highlights &nbsp in the content">
+                              <label for="nbspFinder"><input id="nbspFinder" type="checkbox" name="valueselected" value="nbspHighlighter"> <span>Check for &amp;nbsp</span></label>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- DSM SECTION Ends HERE -->
+                     <div>
+                        <button type="button" id="self-check-button" title="Check">Start Check</button>
+                     </div>
+                     <div>
+                        <button type="button" id="show-utag-button" title="Show Utag">Show Utag</button>
+                     </div>
+                     <section class="legend-box">
+                        <div class="master-feilds-box-div">
+                           <span class="master-feilds-box"></span><span class="master-feilds-box-p">Master Content</span>
+                        </div>
+                        <div class="smallfont-feilds-box-div">
+                           <span class="smallfont-feilds-box"></span><span class="smallfont-feilds-box-p">Small Font Applied</span>
+                        </div>
+                        <div class="hashlink-feilds-box-div">
+                           <span class="hashlink-feilds-box"></span><span class="hashlink-feilds-box-p">Hash Links Present</span>
+                        </div>
+                        <div class="ortherurl-feilds-box-div">
+                           <span class="ortherurl-feilds-box"></span><span class="ortherurl-feilds-box-p">Other URL's</span>
+                        </div>
+                        <div class="heading-tags-bold-box-div">
+                           <span class="heading-tags-bold-box"></span><span class="heading-tags-bold-box-p">Bold in Heading Tags</span>
+                        </div>
+                     </section>
+                  </div>
+               </div>
+            </li>
+            <li>
+               <div class="content__wrapper">
+                  <div class="common-links-container">
+                     <div id="meta-accordion">
+                        <h3>Meta Data Of Page</h3>
+                        <div>
+                           <table id="show-page-meta">
+                           </table>
+                        </div>
+                        <h3>Heading Tags</h3>
+                        <div>
+                           <table id="show-page-headers">
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </li>
+         </ul>
+      </section>
+      <!-- https://youtu.be/5E94S1J2vBI -->
+      <script src="js/core/jquery-3.6.0.min.js" type="text/javascript"></script>
+      <script src="js/core/jquery-ui.1.12.1.min.js" type="text/javascript"></script>
+      <script src="js/popup/tabFunction.js" type="text/javascript"></script>
+      <script src="js/logic/coreFunctions.js" type="text/javascript"></script>
+   </body>
+</html>
