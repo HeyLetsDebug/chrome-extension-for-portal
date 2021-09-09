@@ -17,6 +17,6 @@ var style = "<div id='modalDSM'>"+
       "</div>"+
    "</div>"+
 "</div>";
-document.getElementById("content").insertAdjacentHTML("beforeend", style);
+document.getElementById("wrapper").insertAdjacentHTML("beforeend", style);
 
 /******************************/ // Insert DSM Modal Ends Here /******************************/

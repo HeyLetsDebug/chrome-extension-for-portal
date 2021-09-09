@@ -1,28 +1,48 @@
 /* Modal Content/Box */
 .modalcust-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 25%; /* Could be more or less, depending on screen size */
+  width: 42vmax;
+  border-radius: 5px;
+  height: fit-content;
 }
 
+span.tealiumName {
+    display: inline-block;
+    min-width: 12vmax;
+}
+@media screen and (min-width: 1440px )
+{
+  .modalcust-content {
+  width: 30vmax;
+}
+
+span.tealiumName {
+    display: inline-block;
+    min-width: 7.6vmax;
+}
+}
 
 .modal-header {
   padding: 2px 16px;
 }
-
+.modal-header h2{
+  font-size: 1.8vmax;
+}
 .modal-body {padding: 2px 16px;}
-
+.modal-body p{font-size: 0.8vmax}
 #modalDSM {
   display: none ; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1000; /* Sit on top */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  width: 100vw;
+  height: 100vh;
+  border-radius: 5px;
+  overflow: hidden;
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
@@ -42,4 +62,29 @@
   color: #fff;
   text-decoration: none;
   cursor: pointer;
+}
+.overflowHiden
+{
+  overflow: hidden !important;
+}
+
+.modalShower
+{
+  display: flex !important;
+    align-items: center !important;
+}
+span.tealiumDataSpan:before {
+    content: ":-";
+    font-weight: bold;
+    margin-right: 1vmax;
+}
+span.tealiumDataSpan {
+    font-weight: bold;
+}
+.warningBackdrop {
+    background: red;
+    color: white;
+    font-weight: bold;
+    padding: 2px 10px;
+    font-size: 1.3vmax;
 }

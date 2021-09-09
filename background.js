@@ -1,5 +1,24 @@
-// document.querySelector(".lnXdpd").addEventListener('click', function(){
-//     current_rotation += 90;
-// document.querySelector(".lnXdpd").style.transform = 'rotate(' + current_rotation + 'deg)';
+// async function getCurrentTab() {
+//   let queryOptions = { active: true, currentWindow: true };
+//   let tabs = await chrome.tabs.query(queryOptions);
+//   return tabs;
+// }
+// let tab = await getCurrentTab();
+
+// chrome.scripting.executeScript({
+//   target: {tabId: tab.id},
+//   files: ['content-script.js']
 // });
-alert("I am background")
+
+// chrome.action.onClicked.addListner(tab =>{
+
+// })
+
+chrome.runtime.onInstalled.addListner(reason => {
+  if (reason === 'install')
+  {
+    chrome.tabs.create({
+      url : 'onboarding.html'
+    });
+  };
+})

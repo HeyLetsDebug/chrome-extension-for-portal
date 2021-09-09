@@ -13,6 +13,38 @@ function geturl() {
     });
 }
 
+
+chrome.tabs.query({
+    active: true
+}, function(tabs) {
+    let tab = tabs[0];
+    chrome.scripting.executeScript({
+        target: {
+            tabId: tab.id,
+            allFrames: true
+        },
+        function: showErrorMobileComp
+    }, (results) => {
+        var whtFind = results[0].result;
+        if (whtFind == "1") {
+            document.getElementById("mobile-component-finder").setAttribute("style", "display: block !important");
+        } else {
+            document.getElementById("mobile-component-finder").setAttribute("style", "display: none !important");
+        }
+    });
+});
+
+
+function showErrorMobileComp() {
+    var foundOrNot;
+    var els4 = document.querySelectorAll(".mobile-only");
+    if (els4[0] != null) {
+        foundOrNot = "1";
+    } else {
+        foundOrNot = "0";
+    }
+    return foundOrNot;
+}
 /******************************/ //self QA section starts here /******************************/
 
 function selfCheck() {
@@ -262,37 +294,6 @@ if (el2) {
     el2.addEventListener('click', showUtag, false);
 }
 
-
-function showErrorMobileComp() {
-    var foundOrNot;
-    var els4 = document.querySelectorAll(".mobile-only");
-    if (els4[0] != null) {
-        foundOrNot = "1";
-    } else {
-        foundOrNot = "0";
-    }
-    return foundOrNot;
-}
-
-chrome.tabs.query({
-    active: true
-}, function(tabs) {
-    let tab = tabs[0];
-    chrome.scripting.executeScript({
-        target: {
-            tabId: tab.id,
-            allFrames: true
-        },
-        function: showErrorMobileComp
-    }, (results) => {
-        var whtFind = results[0].result;
-        if (whtFind == "1") {
-            document.getElementById("mobile-component-finder").setAttribute("style", "display: block !important");
-        } else {
-            document.getElementById("mobile-component-finder").setAttribute("style", "display: none !important");
-        }
-    });
-});
 
 
 

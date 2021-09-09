@@ -6,15 +6,19 @@
 
   "action": {
   "default_popup": "./popup.html",
-  "default_icon": "./img/icon-128.png"
+  "default_icon": "./img/icon-512.png"
   },
   "icons": {
+         "512": "./img/icon-512.png",
          "128": "./img/icon-128.png",
          "16": "./img/icon-16.png",
          "32": "./img/icon-32.png",
          "48": "./img/icon-48.png",
          "64": "./img/icon-64.png"
    },
+   "background": {
+     "service_worker": "background.js"
+    },
   "description": "Portal Toolkit, a comprehensive tool for making work easier for everyone",
   "content_scripts": [ {
     "matches": [ "https://author.prod-cf65.gskinternet.com/*", "https://gskpro-com.preview-cf65.gskinternet.com/*","https://author.preprod-cf65.gskinternet.com/*", "https://gskpro.com/*", "https://gskpro-com.preprod-cf65.gskinternet.com/*" ],
@@ -25,7 +29,6 @@
 
   "incognito": "split",
   "offline_enabled": true,
-  
   "permissions": ["activeTab", "storage", "tabs", "downloads", "scripting"],
   "version_name": "Bug Fixer",
   "web_accessible_resources": [
