@@ -14,25 +14,25 @@ function geturl() {
 }
 
 
-chrome.tabs.query({
-    active: true
-}, function(tabs) {
-    let tab = tabs[0];
-    chrome.scripting.executeScript({
-        target: {
-            tabId: tab.id,
-            allFrames: true
-        },
-        function: showErrorMobileComp
-    }, (results) => {
-        var whtFind = results[0].result;
-        if (whtFind == "1") {
-            document.getElementById("mobile-component-finder").setAttribute("style", "display: block !important");
-        } else {
-            document.getElementById("mobile-component-finder").setAttribute("style", "display: none !important");
-        }
-    });
-});
+// chrome.tabs.query({
+//     active: true
+// }, function(tabs) {
+//     let tab = tabs[0];
+//     chrome.scripting.executeScript({
+//         target: {
+//             tabId: tab.id,
+//             allFrames: true
+//         },
+//         function: showErrorMobileComp
+//     }, (results) => {
+//         var whtFind = results[0].result;
+//         if (whtFind == "1") {
+//             document.getElementById("mobile-component-finder").setAttribute("style", "display: block !important");
+//         } else {
+//             document.getElementById("mobile-component-finder").setAttribute("style", "display: none !important");
+//         }
+//     });
+// });
 
 
 function showErrorMobileComp() {
