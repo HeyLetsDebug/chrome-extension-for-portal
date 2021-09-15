@@ -14,25 +14,25 @@ function geturl() {
 }
 
 
-// chrome.tabs.query({
-//     active: true
-// }, function(tabs) {
-//     let tab = tabs[0];
-//     chrome.scripting.executeScript({
-//         target: {
-//             tabId: tab.id,
-//             allFrames: true
-//         },
-//         function: showErrorMobileComp
-//     }, (results) => {
-//         var whtFind = results[0].result;
-//         if (whtFind == "1") {
-//             document.getElementById("mobile-component-finder").setAttribute("style", "display: block !important");
-//         } else {
-//             document.getElementById("mobile-component-finder").setAttribute("style", "display: none !important");
-//         }
-//     });
-// });
+chrome.tabs.query({
+    active: true
+}, function(tabs) {
+    let tab = tabs[0];
+    chrome.scripting.executeScript({
+        target: {
+            tabId: tab.id,
+            allFrames: true
+        },
+        function: showErrorMobileComp
+    }, (results) => {
+        var whtFind = results[0].result;
+        if (whtFind == "1") {
+            document.getElementById("mobile-component-finder").setAttribute("style", "display: block !important");
+        } else {
+            document.getElementById("mobile-component-finder").setAttribute("style", "display: none !important");
+        }
+    });
+});
 
 
 function showErrorMobileComp() {
@@ -114,6 +114,15 @@ function selfCheck() {
                     allFrames: true
                 },
                 function: smallfontunhider
+            });
+        }
+         else if (favBox1 == "caption-fontunhide") {
+            chrome.scripting.executeScript({
+                target: {
+                    tabId: tabId,
+                    allFrames: true
+                },
+                function: captionUnhider
             });
         } else if (favBox1 == "hash-linkunhide") {
             chrome.scripting.executeScript({
@@ -215,6 +224,14 @@ function selfCheck() {
                     allFrames: true
                 },
                 function: smallfntuncheck
+            });
+        } else if (unfavBox1 == "caption-fontunhide") {
+            chrome.scripting.executeScript({
+                target: {
+                    tabId: tabId,
+                    allFrames: true
+                },
+                function: captionUncheck
             });
         } else if (unfavBox1 == "hash-linkunhide") {
             chrome.scripting.executeScript({
@@ -453,6 +470,12 @@ function smallfontunhider() {
         els9[i].setAttribute("style", "color: #0aa00e !important; font-weight: bold;");
     }
 }
+function captionUnhider() {
+    var els10 = document.querySelectorAll(".richText-content .caption");
+    for (var i = 0; i < els10.length; i++) {
+        els10[i].setAttribute("style", "color: #0aa00e !important; font-weight: bold;");
+    }
+}
 
 function headingtagsboldunhider() {
     var strongFinder = document.querySelectorAll("h3>strong, h2>strong, h4>strong");
@@ -514,6 +537,13 @@ function smallfntuncheck() {
     var els9 = document.querySelectorAll(".rte-small-font,.articleTeaser p");
     for (var i = 0; i < els9.length; i++) {
         els9[i].removeAttribute("style");
+    }
+}
+
+function captionUncheck() {
+    var els10 = document.querySelectorAll(".richText-content .caption");
+    for (var i = 0; i < els10.length; i++) {
+        els10[i].removeAttribute("style");
     }
 }
 

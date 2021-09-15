@@ -14,15 +14,6 @@
 
 // })
 
-// chrome.runtime.onInstalled.addListner(reason => {
-//   console.log(reason)
-//   if (reason === 'install')
-//   {
-//     chrome.tabs.create({
-//       url : 'onboarding.html'
-//     });
-//   };
-// })
 
 // chrome.action.onClicked.addListener((tab) => {
 //   chrome.scripting.executeScript({
@@ -31,13 +22,12 @@
 //   });
 // });
 
-//chrome.action.onClicked.addListener(function(tab) { alert('icon clicked')});
 
-try {
-  importScripts('content-script.js');
-} catch (e) {
-  console.error(e);
-}
+// try {
+//   importScripts('content-script.js');
+// } catch (e) {
+//   console.error(e);
+// }
 
 // chrome.action.disable();
 // chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) =>{
@@ -52,3 +42,7 @@ try {
 //     }
 //   }
 // })
+
+// Share with Marcin
+// https://www.youtube.com/watch?v=o8RkZ0jlna8
+// http://csb-scldr.netlify.app/

@@ -7,7 +7,7 @@
   "default_popup": "./popup.html",
   "default_icon": "./img/icon-512.png"
   },
-  "permissions": ["activeTab", "tabs", "downloads", "scripting","storage"],
+  "permissions": ["storage", "tabs","activeTab", "scripting"],
   "icons": {
          "512": "./img/icon-512.png",
          "128": "./img/icon-128.png",
@@ -16,9 +16,6 @@
          "48": "./img/icon-48.png",
          "64": "./img/icon-64.png"
    },
-   "background": {
-     "service_worker": "background.js"
-    },
   "description": "Portal Toolkit, a comprehensive tool for making work easier for everyone",
   "content_scripts": [ {
     "matches": [ "https://author.prod-cf65.gskinternet.com/*?wcmmode=disabled", "https://gskpro-com.preview-cf65.gskinternet.com/*","https://author.preprod-cf65.gskinternet.com/*?wcmmode=disabled", "https://gskpro.com/*", "https://gskpro-com.preprod-cf65.gskinternet.com/*" ],
@@ -29,8 +26,8 @@
 
   "incognito": "split",
   "offline_enabled": true,
-  "version": "0.3.2",
-  "version_name": "Bug Fixer 0.3.2",
+  "version": "0.3.3",
+  "version_name": "Bug Fixer 0.3.3",
   "web_accessible_resources": [
        {
          "resources": [ "/css/asset/clPopupStyle.css" ],
@@ -38,9 +35,9 @@
        }
      ],
   "host_permissions": [
-        "https://author.prod-cf65.gskinternet.com/*",
+        "https://author.prod-cf65.gskinternet.com/*?wcmmode=disabled",
         "https://gskpro-com.preview-cf65.gskinternet.com/*",
-        "https://author.preprod-cf65.gskinternet.com/*",
+        "https://author.preprod-cf65.gskinternet.com/*?wcmmode=disabled",
         "https://gskpro.com/*",
         "https://gskpro-com.preprod-cf65.gskinternet.com/*"
     ]
