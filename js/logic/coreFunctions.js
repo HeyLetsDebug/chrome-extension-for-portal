@@ -559,26 +559,28 @@ function mastrfndruncheck() {
 
 function ShowMeGrid() {
     var els3 = document.querySelectorAll(".layout-inner .main-body .component:not(.navigation-secondary):not(.navigation):not(.navigation-secondary .box):not(.navigation-secondary .image)");
+    var someArray = [];
     for (var i = 0; i < els3.length; i++) {
-        if (/grid_/.test(els3[i].className)) {
-            var wordsLists = els3[i].className;
-            var pattern = wordsLists.match(/(grid_)\w+/g).toString();
-            var h = document.createElement("h6");
-            h.className = "GridDetails";
-            h.innerHTML = pattern;
-            h.style.backgroundColor = "yellow";
-            els3[i].prepend(h);
-        }
-        if (/content--/.test(els3[i].className)) {
-            var wordsLists = els3[i].className;
-            var pattern = wordsLists.match(/(content--)\w+/g).toString();
-            var h = document.createElement("h6");
-            h.className = "GridDetails";
-            h.innerHTML = pattern;
-            h.style.backgroundColor = "yellow";
-            els3[i].prepend(h);
-        }
 
+        if (/content--/.test(els3[i].className)) {
+            let classWordsLists = els3[i].className;
+            let classPattern = classWordsLists.match(/(content--)\w+/g).toString();
+            someArray.push(classPattern)
+        }
+        if (/grid_/.test(els3[i].className)) {
+            let gridWordsLists = els3[i].className;
+            let gridPattern = gridWordsLists.match(/(grid_)\w+/g).toString();
+            someArray.push(gridPattern)
+        }
+        if (Array.isArray(someArray) && someArray.length) {
+            
+            var h = document.createElement("h6");
+            h.className = "GridDetails";
+            h.innerHTML = someArray.join(" & ");
+            h.style.backgroundColor = "yellow";
+            els3[i].prepend(h);
+            someArray = [];
+        }
         els3[i].setAttribute("style", "border: 2px solid red !important");
     }
 }
@@ -595,7 +597,15 @@ function removeShowMeGrid() {
 
 /******************************/ //Show Alt Tags On Front End/******************************/
 function AltTagShower() {
-    var imager = document.querySelectorAll(".layout-inner .main-body img");
+    var MTBody = document.getElementsByTagName('body')[0];
+    var imager;
+    if (MTBody.classList.contains('modern-template')) {
+        imager = document.querySelectorAll(".layout-inner .main-body img");
+    }
+    else
+    {
+        imager = document.querySelectorAll(".component:not(.image-gsk-logo):not(.image-search-header) img");
+    }
     var imgSourceString;
     var str2 = "article-teaser-image-src";
     for (var i = 0; i < imager.length; i++) {

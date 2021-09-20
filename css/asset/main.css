@@ -88,6 +88,10 @@ input{
   padding-left: 22px;
   text-indent: -22px;
 }
+.checkboxes label, .checkboxes label input
+{
+  cursor: pointer;
+}
 .checkboxes label span {
   vertical-align: middle;
   font-weight: 600;
