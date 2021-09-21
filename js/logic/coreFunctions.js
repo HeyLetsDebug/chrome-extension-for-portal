@@ -604,7 +604,7 @@ function AltTagShower() {
     }
     else
     {
-        imager = document.querySelectorAll(".component:not(.image-gsk-logo):not(.image-search-header) img");
+        imager = document.querySelectorAll(".component img:not(.header-image .component-content img):not(.image-gsk-logo .component-content img):not(.image-search-header .component-content img):not(.hcpwebshop .component-content img):not(.rte-footer-links .component-content img)");
     }
     var imgSourceString;
     var str2 = "article-teaser-image-src";
@@ -630,6 +630,7 @@ function AltTagShower() {
         h.style.position = "absolute";
         h.style.width = "fit-content";
         h.style.zIndex = "9999";
+        h.style.fontSize="12px";
 
         h.innerHTML = "<strong>ALT : </strong>" + imager[i].alt;
         if (imager[i].classList.contains('article-teaser-image')) {
