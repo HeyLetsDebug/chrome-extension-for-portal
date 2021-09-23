@@ -83,23 +83,26 @@ function selfCheck() {
                 },
                 function: removeloggedin
             });
-        } else if (favBox1 == "prescriberunhide") {
-            chrome.scripting.executeScript({
-                target: {
-                    tabId: tabId,
-                    allFrames: true
-                },
-                function: prescriberunhider
-            });
-        } else if (favBox1 == "non-prescriberunhide") {
-            chrome.scripting.executeScript({
-                target: {
-                    tabId: tabId,
-                    allFrames: true
-                },
-                function: nonprescriberunhider
-            });
-        } else if (favBox1 == "master-finderunhide") {
+        } 
+        // else if (favBox1 == "prescriberunhide") {
+        //     chrome.scripting.executeScript({
+        //         target: {
+        //             tabId: tabId,
+        //             allFrames: true
+        //         },
+        //         function: prescriberunhider
+        //     });
+        // } 
+        // else if (favBox1 == "non-prescriberunhide") {
+        //     chrome.scripting.executeScript({
+        //         target: {
+        //             tabId: tabId,
+        //             allFrames: true
+        //         },
+        //         function: nonprescriberunhider
+        //     });
+        // } 
+        else if (favBox1 == "master-finderunhide") {
             chrome.scripting.executeScript({
                 target: {
                     tabId: tabId,
@@ -193,23 +196,25 @@ function selfCheck() {
                 },
                 function: remloggedinperss
             });
-        } else if (unfavBox1 == "prescriberunhide") {
-            chrome.scripting.executeScript({
-                target: {
-                    tabId: tabId,
-                    allFrames: true
-                },
-                function: presunhideuncheck
-            });
-        } else if (unfavBox1 == "non-prescriberunhide") {
-            chrome.scripting.executeScript({
-                target: {
-                    tabId: tabId,
-                    allFrames: true
-                },
-                function: nonpresunhideuncheck
-            });
-        } else if (unfavBox1 == "master-finderunhide") {
+        }
+        // else if (unfavBox1 == "prescriberunhide") {
+        //     chrome.scripting.executeScript({
+        //         target: {
+        //             tabId: tabId,
+        //             allFrames: true
+        //         },
+        //         function: presunhideuncheck
+        //     });
+        // } else if (unfavBox1 == "non-prescriberunhide") {
+        //     chrome.scripting.executeScript({
+        //         target: {
+        //             tabId: tabId,
+        //             allFrames: true
+        //         },
+        //         function: nonpresunhideuncheck
+        //     });
+        // } 
+        else if (unfavBox1 == "master-finderunhide") {
             chrome.scripting.executeScript({
                 target: {
                     tabId: tabId,
@@ -450,19 +455,19 @@ function removeloggedin() {
     }
 }
 
-function prescriberunhider() {
-    var els2 = document.querySelectorAll(".personalization-prescriber-box");
-    for (var i = 0; i < els2.length; i++) {
-        els2[i].setAttribute("style", "display: block !important");
-    }
-}
+// function prescriberunhider() {
+//     var els2 = document.querySelectorAll(".personalization-prescriber-box");
+//     for (var i = 0; i < els2.length; i++) {
+//         els2[i].setAttribute("style", "display: block !important");
+//     }
+// }
 
-function nonprescriberunhider() {
-    var els3 = document.querySelectorAll(".personalization-non-prescriber-box");
-    for (var i = 0; i < els3.length; i++) {
-        els3[i].setAttribute("style", "display: block !important");
-    }
-}
+// function nonprescriberunhider() {
+//     var els3 = document.querySelectorAll(".personalization-non-prescriber-box");
+//     for (var i = 0; i < els3.length; i++) {
+//         els3[i].setAttribute("style", "display: block !important");
+//     }
+// }
 
 function smallfontunhider() {
     var els9 = document.querySelectorAll(".rte-small-font,.articleTeaser p");
@@ -498,19 +503,19 @@ function remloggedinperss() {
     }
 }
 
-function presunhideuncheck() {
-    var els6 = document.querySelectorAll(".personalization-prescriber-box");
-    for (var i = 0; i < els6.length; i++) {
-        els6[i].setAttribute("style", "display: none !important");
-    }
-}
+// function presunhideuncheck() {
+//     var els6 = document.querySelectorAll(".personalization-prescriber-box");
+//     for (var i = 0; i < els6.length; i++) {
+//         els6[i].setAttribute("style", "display: none !important");
+//     }
+// }
 
-function nonpresunhideuncheck() {
-    var els6 = document.querySelectorAll(".personalization-prescriber-box");
-    for (var i = 0; i < els6.length; i++) {
-        els6[i].setAttribute("style", "display: none !important");
-    }
-}
+// function nonpresunhideuncheck() {
+//     var els6 = document.querySelectorAll(".personalization-prescriber-box");
+//     for (var i = 0; i < els6.length; i++) {
+//         els6[i].setAttribute("style", "display: none !important");
+//     }
+// }
 
 function headtaguncheck() {
     var strongFinder = document.querySelectorAll("h3>strong, h2>strong, h4>strong");
@@ -578,6 +583,7 @@ function ShowMeGrid() {
             h.className = "GridDetails";
             h.innerHTML = someArray.join(" & ");
             h.style.backgroundColor = "yellow";
+            h.style.color = "black";
             els3[i].prepend(h);
             someArray = [];
         }

@@ -15,6 +15,8 @@ var style = "<div id='modalDSM'>"+
       "</div>"+
       "<div class='modal-body' id='modalContentArea'>"+
       "</div>"+
+      "<div class='modal-footer' id='modalWarningArea'>"+
+      "</div>"+
    "</div>"+
 "</div>";
 document.getElementById("wrapper").insertAdjacentHTML("beforeend", style);
