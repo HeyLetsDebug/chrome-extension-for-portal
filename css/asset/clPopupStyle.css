@@ -91,3 +91,40 @@ span.tealiumDataSpan {
     font-weight: bold;
     padding: 2px 6px;
 }
+
+/*superscipt class CSS*/
+
+.markedTextNonAscii
+{
+  border: 2px solid red;
+    padding: 2px 6px;
+    border-radius: 50px;
+}
+
+.AltDetails
+{
+      background-color: #000000cc;
+    position: absolute;
+    z-index: 9999;
+    font-size: 12px !important;
+    color: yellow !important;
+    padding: 5px 12px;
+    text-align: left;
+    letter-spacing: 1px;
+}
+.positionRelativer
+{
+  position: relative !important;
+}
+.AnchorDetails
+{
+  background-color: #000000cc;
+  z-index: 9999;
+  font-size: 12px !important;
+  color: yellow !important;
+  padding: 5px 12px;
+  text-align: left;
+  letter-spacing: 1px;
+  width: fit-content;
+  display: block;
+}

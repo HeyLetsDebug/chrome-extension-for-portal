@@ -173,6 +173,22 @@ function selfCheck() {
                 },
                 function: initializeNbsp
             });
+        } else if (favBox1 == "nonascii-fontunhide") {
+            chrome.scripting.executeScript({
+                target: {
+                    tabId: tabId,
+                    allFrames: true
+                },
+                function: initializeAsciiChecker
+            });
+        } else if (favBox1 == "anchors-unhide") {
+            chrome.scripting.executeScript({
+                target: {
+                    tabId: tabId,
+                    allFrames: true
+                },
+                function: initializeAnchorChecker
+            });
         }
 
     })
@@ -285,6 +301,22 @@ function selfCheck() {
                     allFrames: true
                 },
                 function: initializeNbspRemover
+            });
+        } else if (unfavBox1 == "nonascii-fontunhide") {
+            chrome.scripting.executeScript({
+                target: {
+                    tabId: tabId,
+                    allFrames: true
+                },
+                function: initializeAsciiCheckerRemover
+            });
+        } else if (unfavBox1 == "anchors-unhide") {
+            chrome.scripting.executeScript({
+                target: {
+                    tabId: tabId,
+                    allFrames: true
+                },
+                function: initializeAnchorCheckerRemover
             });
         }
 
@@ -620,26 +652,29 @@ function AltTagShower() {
             imgSourceString = imager[i].src.toString();
             if (!imgSourceString.includes(str2)) {
                 imgSourceString = imager[i].src.toString();
-                imageTager(imgSourceString);
+                const imagePWidth = imager[i].closest('div.component-content').offsetWidth
+                imageTager(imgSourceString, imagePWidth);
             }
         } else {
             imgSourceString = imager[i].getAttribute("data-src");
-            imageTager(imgSourceString);
+                const imagePWidth = imager[i].closest('div.component-content').offsetWidth
+                imageTager(imgSourceString, imagePWidth);
         }
 
     }
 
-    function imageTager(path) {
-        var h = document.createElement("h6");
+    function imageTager(path, widthOfP) {
+        var h = document.createElement("span");
         h.className = "AltDetails";
-        h.style.backgroundColor = "yellow";
-        h.style.position = "absolute";
-        h.style.width = "fit-content";
-        h.style.zIndex = "9999";
-        h.style.fontSize="12px";
-
+        h.style.width = widthOfP + "px";
+        if (imager[i].alt == "") {
+        h.innerHTML = "<strong>ALT Not Available </strong>";
+        } else {
         h.innerHTML = "<strong>ALT : </strong>" + imager[i].alt;
+        }
+
         if (imager[i].classList.contains('article-teaser-image')) {
+            console.log(imager[i].closest('div.component-content'))
             imager[i].before(h);
             h.style.top = "0px";
             var imageUrl = path;
@@ -650,11 +685,11 @@ function AltTagShower() {
             xhr.onload = function() {
                 blob = xhr.response;
                 var SizeinKB = blob.size / 1024;
-                h.innerHTML += "<strong> | Size : </strong>" + SizeinKB.toFixed(2) + 'KB';
+                h.innerHTML += "<br/><strong>Size : </strong>" + SizeinKB.toFixed(2) + 'KB';
             }
             xhr.send();
         } else {
-            imager[i].before(h);
+            imager[i].closest('div.component-content').before(h);
             var imageUrl = path;
             var blob = null;
             var xhr = new XMLHttpRequest();
@@ -663,7 +698,7 @@ function AltTagShower() {
             xhr.onload = function() {
                 blob = xhr.response;
                 var SizeinKB = blob.size / 1024;
-                h.innerHTML += "<strong> | Size : </strong>" + SizeinKB.toFixed(2) + 'KB';
+                h.innerHTML += "<br/><strong>Size : </strong>" + SizeinKB.toFixed(2) + 'KB';
             }
             xhr.send();
         }
@@ -677,8 +712,8 @@ function AltTagShowerRemove() {
 /******************************///Check For nbsp in content area/******************************/
 
 function initializeNbsp() {
-    var els5 = document.querySelectorAll('html body.modern-template #content .layout-inner .main-body .component');
-    let searched = '&nbsp;'
+    let els5 = document.querySelectorAll("#content .main-body h1,#content .main-body h2,#content .main-body h3,#content .main-body h4,#content .main-body h5,#content .main-body h6,#content .main-body a,#content .main-body p,#content .main-body span,#content .main-body td,#content .main-body li");
+    let searched = '&nbsp;';
     let re = new RegExp(searched, "g");
     for (var i = 0; i < els5.length; i++) {
 
@@ -698,3 +733,69 @@ function initializeNbspRemover() {
         note[i].outerHTML = note[i].innerHTML
     }
 }
+
+
+/******************************///Check For Sup/Sub/Non-Ascii in content area/******************************/
+
+function initializeAsciiChecker() {
+let allData = document.querySelectorAll("#content .main-body h1,#content .main-body h2,#content .main-body h3,#content .main-body h4,#content .main-body h5,#content .main-body h6,#content .main-body a,#content .main-body p,#content .main-body span,#content .main-body td,#content .main-body li")
+    
+
+    for (let i = 0; i < allData.length; i++) {
+        var pureData = allData[i].innerHTML;
+
+        var elems = allData[i];
+
+        isAsciiOnly(pureData, elems)
+    }  
+
+    function isAsciiOnly(str, welems) {
+        let arr = [160, 223, 169, 8217, 8804,8805, 8212];
+         const usingSpread = [...str];
+
+        for (let val of usingSpread) { 
+              if (val.charCodeAt(0) > 127 && !arr.includes(val.charCodeAt(0)))
+              {  
+                usingSpread[usingSpread.indexOf(val)] = "<span class='markedTextNonAscii'>" + val + "</span>";
+                let newString = usingSpread.join("");
+                welems.innerHTML = newString;
+              }
+        }
+    }
+}
+
+function initializeAsciiCheckerRemover() {
+    let note = document.querySelectorAll('.markedTextNonAscii');
+    for (var i = 0; i < note.length; i++) {
+        note[i].outerHTML = note[i].innerHTML
+    }
+}
+
+
+/******************************///Check For Sup/Sub/Non-Ascii in content area/******************************/
+
+function initializeAnchorChecker() {
+    let apather = document.querySelectorAll("#content h1,#content h2,#content h3,#content p,#content span,#content li");
+    for (var i = apather.length - 1; i >= 0; i--) {
+        try{
+          if (apather[i].childNodes[0].nodeName == "A" && apather[i].childNodes[0].hasAttribute('id')) {
+            
+              var h = document.createElement("span");
+              h.className = "AnchorDetails";
+              h.innerHTML = "#"+apather[i].childNodes[0].getAttribute('id');
+              apather[i].prepend(h);
+
+          } 
+        }
+        catch(error){
+          console.log(error)
+        }
+    }
+}
+
+function initializeAnchorCheckerRemover() {
+    document.querySelectorAll('.AnchorDetails').forEach(function(a) {
+      a.remove()
+    })
+}
+
