@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <link rel="icon" href="/img/favicon-icon.png" type="image/png">
+    <title>Image Cropping Tool</title>
+    <link rel="stylesheet" href="/styles/font-awesome.min.css">
+    <link rel="stylesheet" href="/styles/cropper.css">
+    <link rel="stylesheet" href="/styles/cropper-sub.css">
+  </head>
+  <body class="corpper-body">
+    <div class="sideBar">
+      <h3>Preview Area</h3>
+      <div class="docs-preview clearfix">
+        <div class="img-preview preview-lg"></div>
+        
+      </div>
+      <label class="inputs-for-crop"><span>Width</span>
+      <input id ="width" type="number" placeholder="width" />
+    </label>
+    
+    <label class="inputs-for-crop"><span>Height</span>
+    <input id ="height" type="number" placeholder="height" />
+  </label>
+  <br>
+  <button id="start-crop">Start Crop</button>
+  <table class="tftable" border="1">
+    <tr>
+      <td><p>Hero Feature tile <span>(700x393)</span></p></td>
+      <td><p>Standard content tile - 1 Coloumn <span>(224x126)</span></p></td>
+    </tr>
+    <tr>
+      <td><p>Standard content tile - 2 Coloumn <span>(460x258)</span></p></td>
+      <td><p>Standard content tile - 3 Coloumn <span>(638x374)</span></p></td>
+    </tr>
+    <tr>
+      <td><p>Therapy Tile Featured <span>(460x259)</span></p></td>
+      <td><p>Therapy Tile <span>(185x101)</span></p></td>
+    </tr>
+    <tr>
+      <td><p>Webshop Resource Tile <span>(178x132)</span></p></td>
+      <td><p>Product Packshot <span>(222x166)</span></p></td>
+    </tr>
+    <tr>
+      <td><p>Product Logo <span>(183x103)</span></p></td>
+      <td><p>Icons <span>(52x52)</span></p></td>
+    </tr>
+    <tr>
+      <td><p>Event Banner Large <span>(940x470)</span></p></td>
+      <td><p>Event Banner Small <span>(470x363)</span></p></td>
+    </tr>
+    <tr>
+      <td><p>Event Speaker Image <span>(200x150)</span></p></td>
+      <td><p>Video Poster <span>(720x480)</span></p></td>
+    </tr>
+  </table>
+</div>
+<div class="container">
+  <div class="editor-wrapper">
+    <div class="img-container">
+      <img src="../img/cropper-image.jpeg" alt="Picture">
+    </div>
+  </div>
+  <div id="actions">
+    <div class="docs-buttons">
+      
+      <div class="btn-group">
+        <section>
+          <button type="button" class="btn btn-primary" data-method="rotate" data-option="-45" title="Rotate Left">
+          <span class="docs-tooltip" data-toggle="tooltip" title="cropper.rotate(-45)">
+            <span class="fa fa-rotate-left"></span>
+          </span>
+          </button>
+          <p>Rotate Left</p>
+        </section>
+        <section>
+          <button type="button" class="btn btn-primary" data-method="rotate" data-option="45" title="Rotate Right">
+          <span class="docs-tooltip" data-toggle="tooltip" title="cropper.rotate(45)">
+            <span class="fa fa-rotate-right"></span>
+          </span>
+          </button>
+          <p>Rotate Right</p>
+        </section>
+      </div>
+      <div class="btn-group">
+        <section>
+          <button type="button" class="btn btn-primary" data-method="scaleX" data-option="-1" title="Flip Horizontal">
+          <span class="docs-tooltip" data-toggle="tooltip" title="cropper.scaleX(-1)">
+            <span class="fa fa-arrows-h"></span>
+          </span>
+          </button>
+          <p>Flip</p>
+        </section>
+      </div>
+      
+      <div class="btn-group">
+        <section>
+          <button type="button" class="btn btn-primary" data-method="cropperGrid">
+          <span class="docs-tooltip">
+            <span class="fa fa-plus-square-o" id="cropperGridIcon"></span>
+          </span>
+          </button>
+          <p>Center Grid</p>
+        </section>
+      </div>
+      <div class="btn-group">
+        <section>
+          <button type="button" class="btn btn-primary" data-method="reset" id="reset-button" title="Reset">
+          <span class="docs-tooltip" data-toggle="tooltip" title="cropper.reset()">
+            <span class="fa fa-refresh"></span>
+          </span>
+          </button>
+          <p>Refresh</p>
+        </section>
+        <section>
+          <label class="btn btn-primary btn-upload" for="inputImage" title="Upload image file">
+            <input type="file" class="sr-only" id="inputImage" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+            <span class="docs-tooltip" data-toggle="tooltip" title="Import image">
+              <span class="fa fa-upload"></span>
+            </span>
+          </label>
+          <p>Add New Image</p>
+        </section>
+      </div>
+      <div class="btn-group btn-group-crop">
+        <section>
+          <button type="button" class="btn btn-success" data-method="getCroppedCanvas" data-option="{ &quot;maxWidth&quot;: 4096, &quot;maxHeight&quot;: 4096 }">
+          <span class="docs-tooltip" data-toggle="tooltip" title="cropper.getCroppedCanvas({ maxWidth: 4096, maxHeight: 4096 })">
+          Show Cropped Image</span>
+          </button>
+          <p>Show Image</p>
+        </section>
+      </div>
+      
+    </div>
+  </div>
+  <div>
+    <div class="modal fade docs-cropped" id="getCroppedCanvasModal" role="dialog" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" tabindex="-1">
+      <a class="btn btn-primary" id="downloadPng">Download as PNG</a>
+      <a class="btn btn-primary" id="downloadJpg">Download as JPG</a>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+</div>
+</body>
+<script src="/unhide/jquery.min.js"></script>
+<script src="/js/cropper.js"></script>
+<script src="/js/image-cropper.js"></script>
+<script type="text/javascript" src="/js/addons.js"></script>
+</html>

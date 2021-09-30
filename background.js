@@ -1,48 +1,40 @@
-// async function getCurrentTab() {
-//   let queryOptions = { active: true, currentWindow: true };
-//   let tabs = await chrome.tabs.query(queryOptions);
-//   return tabs;
-// }
-// let tab = await getCurrentTab();
-
-// chrome.scripting.executeScript({
-//   target: {tabId: tab.id},
-//   files: ['content-script.js']
-// });
-
-// chrome.action.onClicked.addListner(tab =>{
-
-// })
-
-
-// chrome.action.onClicked.addListener((tab) => {
-//   chrome.scripting.executeScript({
-//     target: {tabId: tab.id},
-//     files: ['content-script.js']
-//   });
-// });
-
-
 // try {
-//   importScripts('content-script.js');
+//   importScripts('/js/core/utilityHandler.js', '/js/core/popupCaller.js');
 // } catch (e) {
 //   console.error(e);
 // }
 
-// chrome.action.disable();
-// chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) =>{
-//   if (changeInfo.status == "complete") {
-//     console.log(tab.url)
-//     if (tab.url.indexOf('yahoo') !=-1) {
-//       console.log('enable');
-//       chrome.action.enable(tabId);
-//     } else {
-//       console.log('disable');
-//       chrome.action.disable(tabId);
-//     }
-//   }
-// })
+try{
+//On first install open onboarding
+chrome.runtime.onInstalled.addListener(r => {
+  if(r.reason == 'install'){
+    //first install
+    //show onboarding page
+    chrome.tabs.create({
+      url: 'onboarding-page.html'
+    });
+  };
+});
 
-// Share with Marcin
-// https://www.youtube.com/watch?v=o8RkZ0jlna8
-// http://csb-scldr.netlify.app/
+
+//ON page change
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+  //chrome.tabs.query({ active: true, lastFocusedWindow: true }, function (tabs) { // <-- can use to grab tabId if not within tabs listener...
+    //const tabId = tabs[0].id; // set tabid
+  
+    // read changeInfo data and do something with it (like read the url)
+    if (changeInfo.url) {
+      //if have all_urls permissions...
+      chrome.scripting.executeScript({
+        files: ['contentScript.js'],
+        target: {tabId: tabId}
+      });
+    }
+  
+  //}); // <-- close extra listener for tabid
+});
+
+
+}catch(e){
+  console.log(e);
+}

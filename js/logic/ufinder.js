@@ -98,12 +98,12 @@ function showModalWithData()
 			window.strr = ela.innerHTML;
 				
 			if (ela.innerHTML.indexOf(window.pageCLNumber) != -1) {
-					modalFooterArea.innerHTML = "Page CL : "+window.strr.toString()+" <span class='greenZone'>MATCHES</span> with Tealium data";
+					modalFooterArea.innerHTML = "Page CL : "+window.pageCLNumber+" <span class='greenZone'>MATCHES</span> with Tealium data";
     				return false;
 			}
 			else
 			{
-				modalFooterArea.innerHTML = "<span class='warningBackdrop'>Page CL is not MATCHING with tealium CL data !!</span>";
+				modalFooterArea.innerHTML = "<span class='warningBackdrop'>Tealium Data is not matching with any page value !!</span>";
 			}
 		})
 	}

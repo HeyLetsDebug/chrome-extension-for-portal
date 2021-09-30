@@ -1,39 +1,54 @@
 var checFlag = document.getElementById("checkBox");
-var tabId
-document.addEventListener("DOMContentLoaded", function() {
-    geturl();
-});
 
-function geturl() {
-    chrome.tabs.query({
-        currentWindow: true,
-        active: true
-    }, function(tabs) {
-        tabId = tabs[0].id;
-    });
+function getTabID() {
+    return new Promise((resolve, reject) => {
+        try {
+            chrome.tabs.query({
+                active: true,
+            }, function (tabs) {
+                resolve(tabs[0].id);
+            })
+        } catch (e) {
+            reject(e);
+        }
+    })
 }
 
+// async function mobileChecker() {
+//     let responseTabID = await getTabID();
+//     chrome.scripting.executeScript({
+//         target: {
+//             tabId: responseTabID,
+//             allFrames: true
+//         },
+//         function: showErrorMobileComp
+//     }, (results) => {
+//         var whtFind = results[0].result;
+//         if (whtFind == "1") {
+//             document.getElementById("mobile-component-finder").setAttribute("style", "display: block !important");
+//         } else {
+//             document.getElementById("mobile-component-finder").setAttribute("style", "display: none !important");
+//         }
+//     });
+// }
 
-chrome.tabs.query({
-    active: true
-}, function(tabs) {
-    let tab = tabs[0];
-    chrome.scripting.executeScript({
-        target: {
-            tabId: tab.id,
-            allFrames: true
-        },
-        function: showErrorMobileComp
-    }, (results) => {
-        var whtFind = results[0].result;
-        if (whtFind == "1") {
-            document.getElementById("mobile-component-finder").setAttribute("style", "display: block !important");
-        } else {
-            document.getElementById("mobile-component-finder").setAttribute("style", "display: none !important");
-        }
-    });
+// mobileChecker();
+
+
+
+// chrome.tabs.query({
+//     active: true
+// }, function(tabs) {
+//     let tab = tabs[0];
+
+// });
+
+const button = document.querySelector('button');
+button.addEventListener('click', event => {
+  chrome.permissions.request({
+    origins: ["<all_urls>"]
+  });
 });
-
 
 function showErrorMobileComp() {
     var foundOrNot;
@@ -47,7 +62,8 @@ function showErrorMobileComp() {
 }
 /******************************/ //self QA section starts here /******************************/
 
-function selfCheck() {
+async function selfCheck() {
+    let tabId = await getTabID();
 
     // checking which checkboxes are selected in the self QA box
     var checkedlistBox1 = []
@@ -389,7 +405,7 @@ function showMetaData() {
             function: findListOfMeta
         }, (results) => {
             document.getElementById("show-page-meta").innerHTML = results[0].result;
-            console.log(document.getElementById("show-page-meta").innerHTML)
+            
             var rowMeta = document.querySelectorAll("tr:nth-child(2n)")
             for (var i = 0; i < rowMeta.length; i++) {
                 rowMeta[i].classList.add("addBorder");
@@ -515,7 +531,7 @@ function captionUnhider() {
 }
 
 function headingtagsboldunhider() {
-    var strongFinder = document.querySelectorAll("h3>strong, h2>strong, h4>strong");
+    var strongFinder = document.querySelectorAll("h3>strong, h2>strong, h4>strong, h1>strong,h3>b, h2>b, h4>b,h1>b");
     for (var i = 0; i < strongFinder.length; i++) {
         strongFinder[i].setAttribute("style", "border: 5px solid #1600ff !important");
     }
@@ -550,7 +566,7 @@ function remloggedinperss() {
 // }
 
 function headtaguncheck() {
-    var strongFinder = document.querySelectorAll("h3>strong, h2>strong, h4>strong");
+    var strongFinder = document.querySelectorAll("h3>strong, h2>strong, h4>strong,h1>strong,h1>b,h3>b, h2>b, h4>b");
     for (var i = 0; i < strongFinder.length; i++) {
         strongFinder[i].removeAttribute("style");
     }
@@ -674,7 +690,6 @@ function AltTagShower() {
         }
 
         if (imager[i].classList.contains('article-teaser-image')) {
-            console.log(imager[i].closest('div.component-content'))
             imager[i].before(h);
             h.style.top = "0px";
             var imageUrl = path;
@@ -712,7 +727,7 @@ function AltTagShowerRemove() {
 /******************************///Check For nbsp in content area/******************************/
 
 function initializeNbsp() {
-    let els5 = document.querySelectorAll("#content .main-body h1,#content .main-body h2,#content .main-body h3,#content .main-body h4,#content .main-body h5,#content .main-body h6,#content .main-body a,#content .main-body p,#content .main-body span,#content .main-body td,#content .main-body li");
+    let els5 = document.querySelectorAll("#content h1,#content h2,#content h3,#content h4,#content h5,#content h6,#content a,#content p,#content span,#content td,#content li");
     let searched = '&nbsp;';
     let re = new RegExp(searched, "g");
     for (var i = 0; i < els5.length; i++) {
@@ -739,6 +754,7 @@ function initializeNbspRemover() {
 
 function initializeAsciiChecker() {
 let allData = document.querySelectorAll("#content .main-body h1,#content .main-body h2,#content .main-body h3,#content .main-body h4,#content .main-body h5,#content .main-body h6,#content .main-body a,#content .main-body p,#content .main-body span,#content .main-body td,#content .main-body li")
+//let allData = document.querySelectorAll("#checkerd");
     
 
     for (let i = 0; i < allData.length; i++) {
@@ -750,12 +766,16 @@ let allData = document.querySelectorAll("#content .main-body h1,#content .main-b
     }  
 
     function isAsciiOnly(str, welems) {
-        let arr = [160, 223, 169, 8217, 8804,8805, 8212];
+        //let arr = [160, 223, 169, 8217, 8804,8805, 8212];
+        let arr = [185,178,179,8308,8309,8310,8311,8312,8313,8304,7491,7495,7580,7496,7497,7584,7501,688,7590,690,7503,737,7504,8319,7506,7510,7520,691,738,7511,7512,7515,695,739,696,7611,8315,7468,7470,7472,7473,7475,7476,7477,7478,7479,7480,7481,7482,7484,7486,7487,7488,7489,11389,7490,739,696,7411,8320, 8321,8322,8323,8325,8325,8326,8327,8328,8329];
          const usingSpread = [...str];
 
         for (let val of usingSpread) { 
-              if (val.charCodeAt(0) > 127 && !arr.includes(val.charCodeAt(0)))
+              //if (val.charCodeAt(0) > 127 && !arr.includes(val.charCodeAt(0)))
+              if (arr.includes(val.charCodeAt(0)))
               {  
+                // console.log(val)
+                // console.log(val.charCodeAt(0))
                 usingSpread[usingSpread.indexOf(val)] = "<span class='markedTextNonAscii'>" + val + "</span>";
                 let newString = usingSpread.join("");
                 welems.innerHTML = newString;

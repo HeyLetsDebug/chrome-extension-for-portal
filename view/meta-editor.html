@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="icon" href="/img/favicon-icon.png" type="image/png">
+      <title>PDF Meta Data Editor</title>
+      <link rel="stylesheet" href="/styles/style.css" />
+      <link rel="stylesheet" href="/comp/jquery-ui.min.css" type="text/css" media="all"/>
+   </head>
+   <body class="popup-image-html">
+      <div class="pdf-page-title">
+         <p>PDF Meta Data Editor</p>
+      </div>
+      <section id="meta-editor">
+         <div class="row-cust">
+            <div class="column-cust">
+               <canvas id="pdf-preview"></canvas>
+            </div>
+            <div class="column-cust">
+               <input class="change-title-input" type="file" accept="application/pdf" id="file-here" placeholder="Paste dam content path here..">
+               <div class="loadPDF-button-wrapper">
+               </div>
+               <input class="change-title-input" type="text" id="title-of-pdf" placeholder="Wait till title of PDF shows here...">
+               <div class="modify-button-wrapper">
+                  <button id="modify-button">Modify & Save Title</button>
+                  <button id="remove-meta-button">Remove Title</button>
+               </div>
+            </div>
+         </div>
+      </section>
+   </body>
+
+   <script type="text/javascript" src="/unhide/jquery.min.js"></script>
+   <script type="text/javascript" src="/comp/jquery-ui.min.js"></script>
+   <script type="text/javascript" src="/js/pdf.min.js"></script>
+   <script type="text/javascript" src="/js/pdf.worker.min.js"></script>
+   <script type="text/javascript" src="/js/download.js"></script>
+   <script type="text/javascript" src="/js/pdf-lib.min.js"></script>
+   <script type="text/javascript" src="/js/pdf-meditor.js"></script>
+   <script type="text/javascript" src="/js/addons.js"></script>
+
+</html>

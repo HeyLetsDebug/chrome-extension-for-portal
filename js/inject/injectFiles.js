@@ -22,3 +22,12 @@ var style = "<div id='modalDSM'>"+
 document.getElementById("wrapper").insertAdjacentHTML("beforeend", style);
 
 /******************************/ // Insert DSM Modal Ends Here /******************************/
+
+
+// var style2 = "<div class='recomdSidebar'>"+
+//   '<div class="recomdSidebarWrapper">This is Sidebar</div>'+
+// '</div>';
+// document.getElementsByTagName("body")[0].insertAdjacentHTML("beforebegin", style2);
+
+// var d = [document.querySelectorAll("#content h1,#content h2,#content h3,#content h4,#content h5,#content h6")];
+// console.log(d)
