@@ -1,0 +1,757 @@
+body{
+margin:0;
+position: relative;
+width: 100%;
+color: rgb(115, 115, 115);
+font-size: 14px;
+}
+button{
+  display: block;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+    letter-spacing: 1px;
+    border-width: 0px;
+    padding: 10px 16px;
+    width: 100%;
+    cursor: pointer;
+}
+.regular-checkbox {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+background-color: #fff;
+border: 2px solid #000;
+padding: 5px;
+border-radius: 20px;
+top: 4px;
+display: inline-block;
+position: relative;
+}
+.regular-checkbox:checked {
+background-color: #000;
+border: 2px solid #fff;
+}
+
+.row-cust:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.row-cust{
+padding-bottom: 10px;
+}
+.column-cust {
+float: left;
+    width: 50%;
+}
+
+.box3 {
+margin-right: 5px;
+margin-left: 5px;
+
+}
+.box4 {
+margin-right: 5px;
+margin-left: 5px;
+}
+
+.self-qa-container, .asset-deffination-container, .common-links-container {
+    margin-top: 10px;
+/*    border: 1px solid #cdcdcd;*/
+    margin-bottom: 10px;
+    padding-top: 10px;
+margin-right: 10px;
+margin-left: 10px;
+}
+.asset-deffination-container{
+      padding: 20px 20px 0px 20px;
+}
+
+ul.link {
+    list-style-type: circle;
+    font-weight: 700;
+    font-size: 12px;
+    padding-inline-start: 30px !important;
+}
+.box1-row-2{
+      margin-top: 10px;
+  border: 1px solid #cdcdcd;
+    margin-bottom: 10px;
+}
+input{
+      vertical-align: middle;
+}
+.checkboxes label {
+  display: block;
+  padding-right: 10px;
+  padding-left: 22px;
+  text-indent: -22px;
+}
+.checkboxes label, .checkboxes label input
+{
+  cursor: pointer;
+}
+.checkboxes label span {
+  vertical-align: middle;
+  font-weight: 600;
+}
+
+#runquerybutton{
+    width: 80%;
+    margin: 0px auto;
+    padding: 7px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #d03f3f;
+}
+
+.functionButtonWrapper
+{
+  display: flex;
+  align-items: center;
+    justify-content: space-between;
+}
+#self-check-button{
+    width: 45%;
+    margin: 0px auto;
+    padding: 6px;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    background: #D64A4B;
+transition-duration: 0.5s;
+}
+#self-check-button:hover{
+        background: #983131;
+}
+#show-utag-button{
+    width: 45%;
+    margin: 0px auto;
+    padding: 6px;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    background: #2ecc71;
+transition-duration: 0.5s;
+}
+
+#show-utag-button:hover{
+        background: #20904f;
+}
+
+.checkboxes:hover span{
+color: red;
+transition-duration: 0.5s;
+}
+.checkboxes{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+ul.link li a {
+    color: blue;
+}
+ul.link li a:hover {
+    color: red;
+    letter-spacing: 0.5px;
+    transition-duration: 0.5px;
+}
+
+.highlightme{
+    border: 10px solid #edff004f !important
+}
+
+.text-boxes label{
+   font-weight: bolder;
+   letter-spacing: 0.5px;
+}
+.text-boxes{
+    margin-top: 3px;
+    float: left;
+    width: 33%;
+}
+.text-boxes-row{
+    display: flex;
+}
+#show-content{
+    height: 115px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    display: block;
+    background: #272727;
+    color: white;
+    padding: 20px;
+
+}
+select {
+ display: block;
+    width: 80%;
+    margin-top: 10px;
+    padding: 5px;
+}
+/*legend boxes*/
+.master-feilds-box{
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border: 1px solid black;
+    background: #edff004f;
+}
+.smallfont-feilds-box{
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border: 1px solid black;
+    background: #0aa00e;
+}
+
+.hashlink-feilds-box{
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border: 1px solid black;
+    background: #ff00008a;
+}
+
+.ortherurl-feilds-box{
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border: 1px solid black;
+    background: #9c27b0c7;
+}
+
+.heading-tags-bold-box{
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border: 1px solid black;
+    background: #1600ff;
+}
+.master-feilds-box-div, .smallfont-feilds-box-div, .hashlink-feilds-box-div, .ortherurl-feilds-box-div, .heading-tags-bold-box-div{
+    display: inline-block;
+    padding-bottom: 5px;
+    padding-right: 10px;
+}
+.master-feilds-box-p, .smallfont-feilds-box-p, .hashlink-feilds-box-p, .ortherurl-feilds-box-p, .heading-tags-bold-box-p{
+display: inline-block;
+    margin-left: 5px;
+    position: relative;
+    bottom: 1px;
+    letter-spacing: 0.8px;
+}
+
+
+
+/****************************************************************inspect image structure setup****************************************************************/
+table,tr,td,em,img {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    font-family: arial, sans-serif;
+}
+
+table {
+    width: 100%;
+}
+
+body.popup-image-html {
+    max-height: 400px;
+    color: #ffffff;
+}
+body.popup-image-html {
+    max-height: 400px;
+    color: #000000;
+}
+
+td:first-child {
+    text-align: right;
+    min-width: 100px;
+    color: #000000;
+    font-weight: 700;
+    padding-right: 5px;
+}
+
+tr{
+    background: #ffffff;
+}
+
+td em {
+    font-weight: bold;
+    font-style: normal;
+}
+
+td {
+color: black;
+    line-height: 150%;
+    text-indent: 8px;
+    height: 150%;
+}
+
+td img {
+    padding: 5px 2px;
+    max-width: 300px;
+}
+
+tr:last-child td:first-child {
+    vertical-align: top;
+}
+
+td a {
+    display: block;
+    word-break: keep-all;
+    white-space: nowrap;
+}
+
+tr td.error {
+    color: #c7c7c7;
+}
+
+tr td span.gray {
+    color: #888888
+}
+
+.image-preview{
+  background: cadetblue;
+}
+
+
+/****************************************************************popup body tab structure setup****************************************************************/
+.bg-color {
+  background-color: #46a1de;
+  transition-duration: .5s;
+}
+.wrapper {
+  min-width: 600px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tabs {
+    margin-top: -1em;
+    margin-block-end: 0em;
+    padding-inline-start: 0px;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  -webkit-transform: translateY(12px);
+  transform: translateY(12px);
+}
+.tabs > li {
+  transition-duration: .25s;
+  display: table-cell;
+  list-style: none;
+  text-align: center;
+padding: 15px 15px 20px 15px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  color: white;
+    font-weight: 600;
+    font-size: 17px;
+}
+.tabs > li:before {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 120%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+  transition-duration: .25s;
+  border-radius: 5px 5px 0 0;
+}
+.tabs > li:hover:before {
+  -webkit-transform: translateY(70%);
+  transform: translateY(70%);
+}
+.tabs > li.active {
+    color: #ff0000;
+}
+.tabs > li.active:before {
+  transition-duration: .5s;
+  background-color: white;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.tab__content {
+    margin-top: 12px;
+    margin-block-end: 0em;
+    padding-inline-start: 0px;
+  background-color: white;
+  position: relative;
+  width: 100%;
+}
+.tab__content > li {
+    letter-spacing: 0.5px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  list-style: none;
+}
+.tab__content > li .content__wrapper {
+  width: 100%;
+  background-color: white;
+}
+
+#show-table table{
+  overflow: scroll;
+}
+
+#mobile-component-finder{
+  display: none;
+      border: 3px solid red;
+    padding: 10px;
+    color: #d64a4b;
+    font-weight: 700;
+}
+.pdf-page-title{
+background-color: #271851!important;
+color: white;
+}
+.outlook-pdf-title {
+    background-color: #009688!important;
+    color: white;
+}
+.pdf-page-title p, .outlook-pdf-title p{
+padding: 10px 10px;
+text-align: center;
+font-size: 23px;
+    letter-spacing: 1px;
+    margin-top: 0px;
+}
+#add-field-button {
+    width: 50%;
+    margin: 15px auto;
+    border: 2px solid #261751;
+    background-color: transparent;
+    color: #261751;
+    font-weight: 700;
+        text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+        padding: .375rem 40px;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 25px;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.mergepdf-button-wrapper{
+  text-align: center;
+}
+#mergepdf-button {
+width: 90%;
+    margin: 15px auto;
+    border: 2px solid #261751;
+    background-color: #271851;
+    color: #ffffff;
+    font-weight: 700;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    padding: .375rem 40px;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 3px;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+
+#add-field-button:hover{
+    border: 2px solid #ff9750;
+    color: #ff9750;
+}
+
+#form-content, #out-form-content{
+  text-align: center;
+}
+
+.pdf-upload-input:hover{
+    border: 1px solid #ff9750;
+    color: #ff9750;
+}
+
+.pdf-upload-input {
+    width: 90%;
+cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #e8e2f2;
+    background-color: #f7f6f9;
+    color: #261751;
+    font-size: 15px;
+    font-weight: 600;
+    padding: .200rem 20px .200rem 10px;
+    margin-bottom: 10px;
+}
+
+.outlook-pdf-input:hover{
+    border: 1px solid #4CAF50;
+    color: #4CAF50;
+}
+
+.outlook-pdf-input {
+    width: 90%;
+cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #e8e2f2;
+    background-color: #f7f6f9;
+    color: #009688;
+    font-size: 15px;
+    font-weight: 600;
+    padding: .200rem 20px .200rem 10px;
+    margin-bottom: 10px;
+}
+
+input:focus, button:focus{
+    outline: none !important;
+}
+.reload-icon{
+width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+}
+
+
+/************************PDF meta editor section starts here*************************/
+
+.dissabled-button{
+  pointer-events: none;
+  background-color: #a6a5a9 !important;
+
+}
+.change-title-input:hover{
+    border: 1px solid #ff9750;
+    color: #ff9750;
+}
+
+.change-title-input {
+    width: 100%;
+    height: 40px;
+cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #e8e2f2;
+    background-color: white;
+    color: #261751;
+    font-size: 15px;
+    font-weight: 600;
+    padding: .200rem 20px .200rem 10px;
+    margin-bottom: 10px;
+}
+
+.modify-button-wrapper, .loadPDF-button-wrapper{
+  text-align: center;
+}
+#modify-button, #remove-meta-button {
+width: 90%;
+    margin: 15px auto;
+    border: 2px solid #261751;
+    background-color: #271851;
+    color: #ffffff;
+    font-weight: 700;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    padding: .375rem 40px;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 3px;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+#meta-editor, #merger-editor
+{
+  padding: 15px;
+}
+#merger-editor {
+
+}
+#pdf-preview
+{
+width: 250px;
+    height: 350px;
+  border: 1px solid black;
+  overflow: hidden;
+    background-image: url(../img/pdf-placeholder.png);
+    background-size: 190px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#title-of-pdf{
+  margin-top: 20px
+}
+
+#files{
+    display: inline-block;
+    width: 100%;
+    padding: 120px 0 0 0;
+    height: 100px;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: url(../img/icon-cloud-upload.png) center center no-repeat #ff000000;
+    border-radius: 6px;
+    background-size: auto;
+    border: 3px solid #da4848;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+#files:hover{
+background-color: #ff000014;
+}
+/************************PDF meta editor section ends here*************************/
+
+#selectedFiles {
+  padding: 0px;
+  width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+#selectedFiles .draggable {
+    overflow: hidden;
+    font-weight: 600;
+    height: 35px;
+    list-style-type: none;
+    border: 1px solid #7f7f7f;
+    background-color: white;
+    color: #212121;
+    line-height: 2.5;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: move;
+    user-select: none;
+    margin: 20px auto;
+    width: 100%;
+}
+#pdf-merger-wrapper{
+  padding: 30px 0px;
+    background: #e1e1e1;
+    border-radius: 5px;
+    border: 2px solid #b8b6b6;
+    display: none;
+}
+
+.data-url-pdf{
+  display: none;
+}
+
+#pdf-name-input{
+  width: 50%;
+  margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 30px;
+}
+.pdf-name-li-listmerge{
+  width: 97%;
+    margin: 0px;
+    display: inline-flex;
+}
+.pdf-name-li-listmerge-delete{
+  cursor: pointer;
+    font-size: 21px;
+    display: inline-block;
+    vertical-align: text-bottom;
+}
+.pdf-name-li-listmerge-delete:hover{
+  color: #da4848;
+}
+
+.button-utilities{
+display: block;
+    padding: 7px 16px;
+    background-color: #1c1c1c;
+    border: 2px solid #1c1c1c;
+    margin-bottom: 10px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    transition-duration: 0.5px;
+}
+.button-utilities:hover{
+    background-color: white;
+    color: #1c1c1c;
+  }
+.highlightmemeta{
+  color: #222582;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#show-page-headers td:first-child{
+   width: 120px;
+  color: #4e4e4e;
+}
+#show-page-anchors td:first-child{
+   width: 180px;
+  color: #4e4e4e;
+}
+#show-page-meta td, #show-page-headers td, #show-page-anchors td{
+    text-indent: 0px;
+    text-align: left;
+    line-height: 1.428571429;
+}
+#show-page-meta tr, #show-page-headers tr, #show-page-anchors tr{
+    width: -webkit-fill-available;
+    vertical-align: top;
+    padding: 10px;
+    display: inline-block;
+}
+#show-page-meta,#show-page-headers, #show-page-headers{
+  border-collapse: collapse; 
+}
+#show-page-meta .addBorder {
+  border-bottom: 1px solid black;
+}
+#meta-accordion .ui-accordion-content {
+    height: 100% !important;
+    padding: 1em 2.2em;
+    border-top: 0;
+   /*overflow-x: scroll;*/
+}
+#meta-accordion .ui-accordion-content{
+    overflow: hidden;
+}
+#meta-accordion  .ui-accordion-content table{
+    display: block !important;
+}
+#meta-accordion  .ui-accordion-content table tbody{
+    display: inline !important;
+    word-break: break-word;
+}
+.HighlightMetaName{
+  color: #0a780a;
+    font-weight: 900;
+}
+
+#meta-accordion .ui-state-default{
+    border: 2px solid #000000;
+    background: #000000;
+    font-weight: normal;
+    color: #ffffff;
+}
+#meta-accordion .ui-state-hover{
+     border: 2px solid #000000;
+    background: #ffffff;
+    font-weight: normal;
+    color: #000000; 
+}
+#meta-accordion .ui-accordion-header {
+font-weight: 700;
+    margin: 5px 0 0 0;
+    transition-duration: 0.5s;
+}
+#meta-accordion .ui-widget-content {
+    border: 1px solid #000;
+    padding: 0px;
+}
